@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # LICENSE_CODE ZON ISC
 
 PRODUCT=$2
