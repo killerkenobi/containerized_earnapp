@@ -26,7 +26,7 @@ APP_VER=$(earnapp --version 2>/dev/null)
 VER="${APP_VER:-none}"
 USER=$(whoami)
 RHOST=$(hostname)
-_LADDR=$(hostname -I | cut -d' ' -f1)
+_LADDR=$(hostname -i | cut -d' ' -f1)
 LADDR=${_LADDR:-unknown}
 _IP=$(curl -q4 ifconfig.co 2>/dev/null)
 IP=${_IP:-unknown}
@@ -43,7 +43,7 @@ if [[ $0 == '-y' ]] || [[ $1 == '-y' ]]; then
 fi
 RID=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 32 | head -n 1)
 UUID=$(cat /etc/earnapp/uuid 2>/dev/null)
-UUID_HASH=$(md5sum <<< "$UUID")
+UUID_HASH=$(echo -n "$UUID" | md5sum)
 UUID_I=$((0x${UUID_HASH%% *}))
 UUID_N=$((${UUID_I#-}%100))
 INSTALL=0
