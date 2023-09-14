@@ -1,0 +1,3 @@
+FROM ubuntu:20.04
+RUN apt-get update && apt-get install -y wget
+RUN wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh && bash /tmp/earnapp.sh
